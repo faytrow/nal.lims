@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+    <object name="nal_images"
+            meta_type="Filesystem Directory View"
+            directory="nal.lims:skins/nal_images"/>
+
+    <skin-path name="*">
+        <layer name="nal_images" insert-after="custom"/>
+    </skin-path>
+
+</object>

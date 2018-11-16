@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <adapter
+      name="nal_setupdata"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      factory="nal.lims.setupdata.SetupDataSetList"
+      provides="bika.lims.interfaces.ISetupDataSetList"/>
+
+</configure>
