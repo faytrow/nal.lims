@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright 2018 Botswana Harvard Partnership (BHP)
- from Products.Archetypes.public import StringWidget
+from Products.Archetypes.public import StringWidget
 from Products.Archetypes.public import TextAreaWidget
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 from archetypes.schemaextender.interfaces import ISchemaModifier
-from bhp.lims.config import GENDERS
 from bika.lims import bikaMessageFactory as _
 from bika.lims.browser.fields import DateTimeField
 from bika.lims.browser.widgets import DateTimeWidget
@@ -16,15 +15,17 @@ from bika.lims.fields import ExtTextField
 from bika.lims.interfaces import IAnalysisRequest
 from zope.component import adapts
 from zope.interface import implements
- class AnalysisRequestSchemaExtender(object):
+
+#Additional AR fields
+class AnalysisRequestSchemaExtender(object):
     adapts(IAnalysisRequest)
     implements(IOrderableSchemaExtender)
-     def __init__(self, context):
+    def __init__(self, context):
         self.context = context
-     fields = [
+    fields = [
         ExtStringField(
             "ParticipantID",
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Participant ID"),
                 maxlength=8,
@@ -38,7 +39,7 @@ from zope.interface import implements
         ),
          ExtStringField(
             "OtherParticipantReference",
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Other Participant Ref"),
                 maxlength=12,
@@ -52,7 +53,7 @@ from zope.interface import implements
         ),
          ExtStringField(
             "ParticipantInitials",
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Participant Initials"),
                 maxlength=2,
@@ -66,7 +67,7 @@ from zope.interface import implements
         ),
          ExtStringField(
             "Visit",
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Visit Number"),
                 maxlength=4,
@@ -80,7 +81,7 @@ from zope.interface import implements
         ),
          ExtBooleanField(
             "Fasting",
-            required=1,
+            required=0,
             default=False,
             widget=SelectionWidget(
                 format="radio",
@@ -94,7 +95,7 @@ from zope.interface import implements
         ),
          DateTimeField(
             'DateOfBirth',
-            required=1,
+            required=0,
             widget=DateTimeWidget(
                 label=_('Date of Birth'),
                 datepicker_nofuture=1,
@@ -108,7 +109,7 @@ from zope.interface import implements
         ),
          ExtStringField(
             "Volume",
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Volume"),
                 maxlength=8,
@@ -135,15 +136,15 @@ from zope.interface import implements
             ),
         ),
     ]
-     def getOrder(self, schematas):
+    def getOrder(self, schematas):
         return schematas
-     def getFields(self):
+    def getFields(self):
         return self.fields
- class AnalysisRequestSchemaModifier(object):
+class AnalysisRequestSchemaModifier(object):
     adapts(IAnalysisRequest)
     implements(ISchemaModifier)
-     def __init__(self, context):
+    def __init__(self, context):
         self.context = context
-     def fiddle(self, schema):
+    def fiddle(self, schema):
         schema['Sample'].widget.label = _("Specimen")
         return schema

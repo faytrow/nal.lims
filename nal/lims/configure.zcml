@@ -9,31 +9,31 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="nal">
 
-  <five:registerPackage package="." initialize=".initialize"/>
+    <five:registerPackage package="." initialize=".initialize"/>
 
-  <!-- Filesystem directory view -->
-  <cmf:registerDirectory name="skins" directory="skins" recursive="True"/>
+    <!-- Filesystem directory view -->
+    <cmf:registerDirectory name="skins" directory="skins" recursive="True"/>
 
-  <!-- Package includes -->
-  <inlcude package=".content"/>
-  <include package=".browser"/>
-  <include package=".setupdata"/>
+    <!-- Package includes -->
+    <include package=".content"/>
+    <include package=".browser"/>
+    <include package=".setupdata"/>
 
-  <!-- Installation Profile -->
-  <genericsetup:registerProfile
+    <!-- Installation Profile -->
+    <genericsetup:registerProfile
       name="default"
       title="NAL LIMS"
       directory="profiles/default"
       description='NAL LIMS extension profile for SENAITE'
       provides="Products.GenericSetup.interfaces.EXTENSION"/>
 
-  <!-- Run Setup Script -->
-  <genericsetup:importStep
+    <!-- Run Setup Script -->
+    <genericsetup:importStep
       name="setup_id_formatting"
       title="NAL LIMS: Run Setup Handler"
       description="Run various configuration actions"
       handler="nal.lims.setuphandlers.setupHandler">
       <depends name="content" />
-  </genericsetup:importStep>
+    </genericsetup:importStep>
 
 </configure>

@@ -7,9 +7,11 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="nal">
 
-  <include package="archetypes.schemaextender" />
+  <include package="archetypes.schemaextender"/>
 
-  <adapter factory=".analysisrequest.AnalysisRequestSchemaExtender" />
-  <adapter factory=".analysisrequest.AnalysisRequestSchemaModifier" />
+  <adapter factory=".analysisrequest.AnalysisRequestSchemaExtender"/>
+  <adapter factory=".analysisrequest.AnalysisRequestSchemaModifier"/>
+
+  <adapter factory=".client.ClientSchemaModifier" />
 
 </configure>
