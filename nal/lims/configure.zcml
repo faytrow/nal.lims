@@ -15,6 +15,7 @@
   <cmf:registerDirectory name="skins" directory="skins" recursive="True"/>
 
   <!-- Package includes -->
+  <inlcude package=".content"/>
   <include package=".browser"/>
   <include package=".setupdata"/>
 
@@ -23,7 +24,7 @@
       name="default"
       title="NAL LIMS"
       directory="profiles/default"
-      description='BHP LIMS extension profile for SENAITE'
+      description='NAL LIMS extension profile for SENAITE'
       provides="Products.GenericSetup.interfaces.EXTENSION"/>
 
   <!-- Run Setup Script -->

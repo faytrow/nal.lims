@@ -80,7 +80,7 @@ def setup_id_formatting(portal):
 
 
 def hide_unused_ar_fields(portal):
-    """HIdes unused fields from AR Add Form
+    """Hides unused fields from AR Add Form
     """
     logger.info("*** Hiding default fields from AR Add ***")
     field_names_to_hide = ["AdHoc", "Batch", "CCContact", "CCEmails",
@@ -99,7 +99,7 @@ def hide_unused_ar_fields(portal):
     AR_CONFIGURATION_STORAGE = "bika.lims.browser.analysisrequest.manage.add"
     storage = annotation.get(AR_CONFIGURATION_STORAGE, OOBTree())
 
-    visibility = storage.get('visibility', {})
+    visibility = storage.get('visibility', {}).copy()
     for field_name in field_names_to_hide:
         visibility[field_name] = False
     storage.update({"visibility": visibility})
