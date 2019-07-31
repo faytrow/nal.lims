@@ -10,8 +10,11 @@
   <include package="archetypes.schemaextender"/>
 
   <adapter factory=".analysisrequest.AnalysisRequestSchemaExtender"/>
-  <adapter factory=".analysisrequest.AnalysisRequestSchemaModifier"/>
 
   <adapter factory=".client.ClientSchemaModifier" />
+           provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
+  
+  <adapter factory=".batch.BatchSchemaExtender" />
+  <adapter factory=".batch.BatchSchemaModifier"/>
 
 </configure>

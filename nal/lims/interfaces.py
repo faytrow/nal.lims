@@ -5,7 +5,7 @@
 from bika.lims.interfaces import IBikaLIMS
 
 
-class IBhpLIMS(IBikaLIMS):
+class INalLIMS(IBikaLIMS):
     """nal/inferfaces.py Marker interface that defines a Zope 3 browser layer.
     A layer specific for this add-on product.
     This interface is referred in browserlayer.xml.

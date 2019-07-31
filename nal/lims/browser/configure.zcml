@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="nal">
 
@@ -12,5 +13,11 @@
       directory="reports"
       type="reports"
       name="NAL Reports"/>
+
+  <subscriber
+    for="bika.lims.browser.analysisrequest.manage_results.AnalysisRequestManageResultsView
+         bika.lims.interfaces.IAnalysisRequest"
+    provides="senaite.core.listing.interfaces.IListingViewAdapter"
+    factory=".analyses.AnalysesListingViewAdapter"/>
 
 </configure>
