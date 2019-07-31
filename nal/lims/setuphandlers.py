@@ -9,7 +9,7 @@ from zope.annotation.interfaces import IAnnotations
 
 
 def setupHandler(context):
-    """BHP setup handler
+    """NAL setup handler
     """
 
     if context.readDataFile('nal.lims.txt') is None:
@@ -40,45 +40,6 @@ def setup_laboratory(portal):
     lab.edit(title=_('NAL'))
     lab.reindexObject()
 
-
-def setup_id_formatting(portal):
-    """Setup default ID formatting
-    """
-    logger.info("*** Setup ID Formatting ***")
-    bs = portal.bika_setup
-
-    def set_format(format):
-        if 'portal_type' not in format:
-            return
-        logger.info("Applying format {} for {}".format(format.get('form',''),
-                                                       format.get('portal_type')))
-        portal_type = format['portal_type']
-        ids = list()
-        id_map = bs.getIDFormatting()
-        for record in id_map:
-            if record.get('portal_type', '') == portal_type:
-                continue
-            ids.append(record)
-        ids.append(format)
-        bs.setIDFormatting(ids)
-
-    # Sample ID format
-    set_format(dict(form='{seq:06d}',
-                    portal_type='Sample',
-                    prefix='sample',
-                    sequence_type='generated',
-                    split_length=1,
-                    value=''))
-
-    # Analysis Request ID format
-    set_format(dict(form='{sampleId}R{seq:d}',
-                    portal_type='AnalysisRequest',
-                    counter_reference='AnalysisRequestSample',
-                    counter_type='backreference',
-                    sequence_type='counter',
-                    value=''))
-
-
 def hide_unused_ar_fields(portal):
     """Hides unused fields from AR Add Form
     """
@@ -89,10 +50,10 @@ def hide_unused_ar_fields(portal):
                            "DateSampled", "DefaultContainerType",
                            "EnvironmentalConditions", "InvoiceExclude",
                            "PreparationWorkflow", "Priority", "Sample",
-                           "SampleCondition", "SamplePoint", "Sampler",
+                           "SampleCondition", "Sampler",
                            "SamplingDate", "SamplingDeviation", "SamplingRound",
                            "Specification", "StorageLocation", "SubGroup",
-                           "Template",]
+                           "Template", "Custom Field",]
 
     bika_setup = portal.bika_setup
     annotation = IAnnotations(bika_setup)
