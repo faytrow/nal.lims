@@ -7,17 +7,20 @@
   <plone:static
       directory="stickers"
       type="stickers"
-      name="NAL Stickers"/>
+      name="NAL Stickers"
+      />
 
   <plone:static
       directory="reports"
       type="reports"
-      name="NAL Reports"/>
+      name="NAL Reports"
+      />
 
   <subscriber
-    for="bika.lims.browser.analysisrequest.manage_results.AnalysisRequestManageResultsView
-         bika.lims.interfaces.IAnalysisRequest"
-    provides="senaite.core.listing.interfaces.IListingViewAdapter"
-    factory=".analyses.AnalysesListingViewAdapter"/>
+      for="bika.lims.browser.analysisrequest.manage_results.AnalysisRequestManageResultsView
+           bika.lims.interfaces.IAnalysisRequest"
+      provides="senaite.core.listing.interfaces.IListingViewAdapter"
+      factory=".analyses.AnalysesListingViewAdapter"
+      />
 
 </configure>

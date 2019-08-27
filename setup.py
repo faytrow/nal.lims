@@ -1,6 +1,6 @@
 #Author: 	PVanderWeele
 #Date:		11/16/2018
-#Purpose:	Initial commit of custon Senaite Skeleton.
+#Purpose:	NAL LIMS Egg setup.
 
 from setuptools import setup, find_packages
 
@@ -13,6 +13,7 @@ setup(name='nal.lims',
       namespace_packages=['nal'],
       include_package_data=True,
       zip_safe=False,
+#      install_requires=[senaite.lims >= 1.0],
       entry_points="""
           # -*- Entry points: -*-
           [z3c.autoinclude.plugin]

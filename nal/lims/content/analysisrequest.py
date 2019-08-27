@@ -33,8 +33,8 @@ class AnalysisRequestSchemaExtender(object):
             required=1,
             widget=StringWidget(
                 label=_("Report To Contact"),
-                maxlength=30,
-                size=20,
+                maxlength=100,
+                size=30,
                 render_own_label=True,
                 description=_("The person the results will be primarily reported for."),
                 visible={'edit': 'visible',
@@ -49,10 +49,26 @@ class AnalysisRequestSchemaExtender(object):
             required=1,
             widget=StringWidget(
                 label=_("Collected By"),
-                maxlength=30,
-                size=20,
+                maxlength=100,
+                size=30,
                 render_own_label=True,
                 description=_("The person who collected the sample."),
+                visible={'edit': 'visible',
+                         'view': 'visible',
+                         'add': 'edit',
+                         'header_table': 'visible'},
+            )
+        ),
+
+	ExtStringField(
+            'AnalystInitials',
+            required=1,
+            widget=StringWidget(
+                label=_("Analyst Initials"),
+                maxlength=3,
+                size=3,
+                render_own_label=True,
+                description=_("The person the results will be primarily reported for."),
                 visible={'edit': 'visible',
                          'view': 'visible',
                          'add': 'edit',
