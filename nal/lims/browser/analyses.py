@@ -13,10 +13,10 @@ class AnalysesListingViewAdapter(object):
         self.context = context
 
     def before_render(self):
-	self.columns["CaptureDate"].append('"ajax": True')
-	self.columns["CaptureDate"].append('"type": "datetime"')
+	#self.columns["CaptureDate"].append('"ajax": True')
+	#self.columns["CaptureDate"].append('"type": "datetime"')
         return
 
     def folder_item(self, obj, item, index):
-        item["allow_edit"].append("CaptureDate")
+        #item["allow_edit"].append("CaptureDate")
         return item

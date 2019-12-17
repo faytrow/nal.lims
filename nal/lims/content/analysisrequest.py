@@ -62,7 +62,7 @@ class AnalysisRequestSchemaExtender(object):
 
 	ExtStringField(
             'AnalystInitials',
-            required=1,
+            required=0,
             widget=StringWidget(
                 label=_("Analyst Initials"),
                 maxlength=3,
